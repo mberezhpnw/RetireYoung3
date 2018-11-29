@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
+             xmlns:local="clr-namespace:RetireYoung3;assembly=RetireYoung3"
+             xmlns:controls="clr-namespace:RetireYoung3.Controls;assembly=RetireYoung3"
+             x:Class="RetireYoung3.GreetingPage">
+
+
+
+    <!--<ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="5, 20, 5, 0" Android="5, 0, 5, 0" WinPhone="5, 0, 5, 0" />
+    </ContentPage.Padding>-->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ViewModel x:Key="model" />
+            <local:DoubleToStringConverter x:Key="stringConverter" />
+            <local:DoubleRoundingConverter x:Key="roundConverter" />
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+   
+        <StackLayout Grid.Row="0" Grid.Column="0">
+
+        <ScrollView Grid.Row="0" Grid.Column="0">
+
+            <Grid BindingContext="{StaticResource model}" RowSpacing="0" Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <!--Barchart-->
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <!--Columnchart-->
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <!--Addspace-->
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+
+
+
+
+
+
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+
+                </Grid.ColumnDefinitions>
+
+                <!--<Label Text="" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Row="0" Grid.Column="0" x:Name="labelTBD1" Font="15" />
+                <Label Text="" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="1" x:Name="labelTBD2" Font="20" />-->
+
+                <Label HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="0" Margin="0,10,0,10" x:Name="labelAnnualIncome" Font="15" TextColor="DarkSlateGray">
+                    <Label.Text>
+                        Annual Income:
+                    </Label.Text>
+                </Label>
+                <Entry Text="{Binding AnnualIncome, Converter={StaticResource stringConverter}}" Placeholder="50,000" FontSize="Large" TextColor="DarkSlateGray" Keyboard="Numeric" HorizontalTextAlignment="Center" Margin="0,10,0,10" Grid.Row="1" Grid.Column="1" x:Name="entryAnnualIncome"></Entry>
+
+                <Label Text="Current Portfolio Value:" TextColor="DarkSlateGray" Grid.Row="2" Grid.Column="0" Margin="0,0,0,10" x:Name="labelCurrentSavings" Font="15" HorizontalTextAlignment="Center"/>
+                <Entry Text="{Binding CurrentPort, Converter={StaticResource stringConverter}}}" Placeholder="1,000" FontSize="Large" TextColor="DarkSlateGray" Keyboard="Numeric" HorizontalTextAlignment="Center" Margin="0,0,0,10" Grid.Row="2" Grid.Column="1" x:Name="entryCurrentSavings"></Entry>
+
+                <Label Text="Current Annual Expenses:" TextColor="DarkSlateGray" Grid.Row="3" Grid.Column="0" x:Name="labelAnnualExpenses" Font="15" HorizontalTextAlignment="Center"/>
+                <Label Text="{Binding AnnualExpense, StringFormat='{0:C}'}" TextColor="DarkSlateGray" HorizontalTextAlignment="Center" Grid.Row="3" Grid.Column="1" x:Name="labelAnnualExpenses1" Font="Large"></Label>
+
+                <Label Text=" " Grid.Row="4" Grid.Column="0" x:Name="labelSpacer1" Font="15" HorizontalTextAlignment="Center"/>
+                <Label Text=" " HorizontalTextAlignment="Center" Grid.Row="4" Grid.Column="1" x:Name="labelSpacer2"></Label>
+
+                <Label Text="Current Annual Savings:" TextColor="DarkSlateGray" Grid.Row="5" Grid.Column="0" x:Name="labelAnnualSavings1" Font="15" HorizontalTextAlignment="Center"/>
+                <Label Text="{Binding AnnualSavings, StringFormat='{0:C}'}" TextColor="DarkSlateGray" HorizontalTextAlignment="Center" Grid.Row="5" Grid.Column="1" x:Name="labelAnnualSavings2" Font="Large"></Label>
+
+                <Label Text=" " Grid.Row="6" Grid.Column="0" x:Name="labelSpacer3" Font="15" HorizontalTextAlignment="Center"/>
+                <Label Text=" " HorizontalTextAlignment="Center" Grid.Row="6" Grid.Column="1" x:Name="labelSpacer4"></Label>
+
+                <Label Text="Current Annual Savings %:" TextColor="DarkSlateGray" Grid.Row="7" Grid.Column="0" x:Name="labelAnnualSavingsPct" Font="15" HorizontalTextAlignment="Center"/>
+                <Label Text="{Binding Source={x:Reference sliderSavings}, Path=Value, StringFormat='{0:P0}' }" TextColor="DarkSlateGray" HorizontalTextAlignment="Center" Grid.Row="7" Grid.Column="1" x:Name="labelPct" Font="Large" />
+                <Slider Grid.Row="8" Grid.Column="1" Minimum="0.01" Maximum=".95" x:Name="sliderSavings"  Value="{Binding AnnualSavingsPct, Mode=TwoWay, Converter={StaticResource roundConverter}, ConverterParameter=.05}" />
+
+                <Label Text="Return on Investment (ROI):" TextColor="DarkSlateGray" Grid.Row="9" Grid.Column="0" x:Name="labelROI1" Font="15" HorizontalTextAlignment="Center"/>
+                <Label Text="{Binding AnnualROI, StringFormat='{0:P0}' }" TextColor="DarkSlateGray" HorizontalTextAlignment="Center" Grid.Row="9" Grid.Column="1" x:Name="labelROI2" Font="Large" />
+                <Slider Grid.Row="10" Grid.Column="1" Minimum="0.01" Maximum="1" x:Name="sliderROI" Value="{Binding AnnualROI, Mode=TwoWay}" />
+
+                <Label Text="Withdrawal Rate %:" TextColor="DarkSlateGray" Grid.Row="11" Grid.Column="0" x:Name="labelWR1" Font="15" HorizontalTextAlignment="Center"/>
+                <Label Text="{Binding AnnualWithdrawRate, Path=Value, StringFormat='{0:P1}' }" TextColor="DarkSlateGray" HorizontalTextAlignment="Center" Grid.Row="11" Grid.Column="1" x:Name="labelWR2" Font="Large" />
+                <Slider Grid.Row="12" Grid.Column="1" Minimum="0.01" Maximum=".1" x:Name="sliderWR" Value="{Binding AnnualWithdrawRate, Mode=TwoWay}" />
+
+
+                <Label Text="You can retire in " TextColor="DarkSlateGray" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Row="13" Grid.Column="0" x:Name="labelRetireIn1" Font="15" />
+                <Label Text="{Binding YearsToRetire, StringFormat='{0:F1} years' }" TextColor="DarkSlateGray" HorizontalTextAlignment="Start" Grid.Row="13" Grid.Column="1" x:Name="labelRetireIn2" Font="20" />
+
+                <Label Text="putting away " TextColor="DarkSlateGray" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Row="14" Grid.Column="0" x:Name="labelDisplaySaving1" Font="15" />
+                <Label Text="{Binding AnnualSavingsPct, StringFormat='{0:P0} of your income' }" TextColor="DarkSlateGray" HorizontalTextAlignment="Start" Grid.Row="14" Grid.Column="1" x:Name="labelDisplaySaving2" Font="20" />
+
+                <Label Text="Annual expenses " TextColor="DarkSlateGray" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Row="15" Grid.Column="0" x:Name="labelDisplayYrExpenses1" Font="15" />
+                <Label Text="{Binding AnnualExpense, StringFormat='{0:C0}'}" TextColor="DarkSlateGray" HorizontalTextAlignment="Start" Grid.Row="15" Grid.Column="1" x:Name="labelDisplayYrExpenses2" Font="20" />
+
+                <Label Text="Annual savings " TextColor="DarkSlateGray" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Row="16" Grid.Column="0" x:Name="labelDisplayYrSavings1" Font="15" />
+                <Label Text="{Binding AnnualSavings, StringFormat='{0:C0}'}" TextColor="DarkSlateGray" HorizontalTextAlignment="Start" Grid.Row="16" Grid.Column="1" x:Name="labelDisplayYrSavings2" Font="20" />
+
+                <Label Text="Monthly expenses " TextColor="DarkSlateGray" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Row="17" Grid.Column="0" x:Name="labelDisplayMonExpenses1" Font="15" />
+                <Label Text="{Binding MonthlyExpense, StringFormat='{0:C0}'}" TextColor="DarkSlateGray" HorizontalTextAlignment="Start" Grid.Row="17" Grid.Column="1" x:Name="labelDisplayMonExpenses2" Font="20" />
+
+                <Label Text="Monthly savings " TextColor="DarkSlateGray" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Row="18" Grid.Column="0" x:Name="labelDisplayMonSavings1" Font="15" />
+                <Label Text="{Binding MonthlySavings, StringFormat='{0:C0}'}" TextColor="DarkSlateGray" HorizontalTextAlignment="Start" Grid.Row="18" Grid.Column="1" x:Name="labelDisplayMonSavings2" Font="20" />
+
+                <Label Text="Net Worth " TextColor="DarkSlateGray" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Row="19" Grid.Column="0" x:Name="labelDisplayNetWorth1" Font="15" />
+                <Label Text="{Binding Networth, StringFormat='{0:C0}'}" TextColor="DarkSlateGray" HorizontalTextAlignment="Start" Grid.Row="19" Grid.Column="1" x:Name="labelDisplayNetWorth2" Font="20" />
+                <!--<Label Text=" " Grid.Row="21" Margin="0,0,0,20" Grid.Column="0" x:Name="labelSpacer50" Font="5" HorizontalTextAlignment="Start"/>-->
+
+
+                <Button Text="Update Charts" Command="{Binding RecalculateCommand}" BackgroundColor="#009688" Margin="0,0,0,10" Grid.Row="20" 
+                        Grid.Column="1" x:Name="buttonDisplayGraph" Font="15" TextColor="White"/>
+
+                <controls:AdControlView Grid.Row="21" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+                <!--<oxy:PlotView Model="{Binding LineModel}" x:Name="LineModel" Grid.Row="21" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="5"/>-->
+
+                <oxy:PlotView Model="{Binding SimpleBarModel}" x:Name="BarModel" Grid.Row="22" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="8"/>
+
+
+                <oxy:PlotView Model="{Binding ColumnModel}" x:Name="ColumnModel" Grid.Row="30" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="8"/>
+
+                <Label Text="Assumptions" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="40" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="LightGray" x:Name="labelAssumptions" Font="20" />
+                <Label Text=" " Grid.Row="41" Grid.Column="0" Grid.ColumnSpan="2" x:Name="labelSpacer40" Font="5" HorizontalTextAlignment="Start" BackgroundColor="LightGray"/>
+                <Label Text="&#8226; Adjust your income for taxes, and Return on Investment (ROI) percentage for inflation and taxes." TextColor="Black" BackgroundColor="LightGray" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="42" Grid.Column="0" Grid.ColumnSpan="2" x:Name="labelAssumptions1" Font="12" />
+                <Label Text=" " Grid.Row="43" Grid.Column="0" Grid.ColumnSpan="2" x:Name="labelSpacer41" Font="5" HorizontalTextAlignment="Start" BackgroundColor="LightGray"/>
+                <Label Text="&#8226; You are financially independent when ROI covers 100% of expenses." TextColor="Black" BackgroundColor="LightGray" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="44" Grid.Column="0" Grid.ColumnSpan="2" x:Name="labelAssumptions2" Font="12" />
+                <Label Text=" " Grid.Row="45" Grid.Column="0" Grid.ColumnSpan="2" x:Name="labelSpacer42" Font="5" HorizontalTextAlignment="Center" BackgroundColor="LightGray"/>
+                <Label Text="&#8226; Your current expenses will stay constant in retirement." TextColor="Black" BackgroundColor="LightGray" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="46" Grid.Column="0" Grid.ColumnSpan="2" x:Name="labelAssumptions3" Font="12" />
+                <Label Text=" " Grid.Row="47" Grid.Column="0" Grid.ColumnSpan="2" x:Name="labelSpacer43" Font="5" HorizontalTextAlignment="Start" BackgroundColor="LightGray"/>
+                <Label Text="&#8226; Using the recommended 4% withdrawal rate, you may likely never draw down your principle." TextColor="Black" BackgroundColor="LightGray" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="48" Grid.Column="0" Grid.ColumnSpan="2" x:Name="labelAssumptions4" Font="12" />
+                <Label Text=" " Grid.Row="49" Grid.Column="0" Grid.ColumnSpan="2" x:Name="labelSpacer44" Font="5" HorizontalTextAlignment="Center" BackgroundColor="LightGray"/>
+                <Label Text="&#8226; Choosing a higher withdrawal rate percentage will yield less years to retirement, but increases the risk of drawing down your principle. Stick with 4%. (withdraw rate = withdrawal amount / total nest egg)" TextColor="Black" BackgroundColor="LightGray" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="50" Grid.Column="0" Grid.ColumnSpan="2" x:Name="labelAssumptions5" Font="12" />
+
+                <!--<controls:AdControlView Grid.Row="39" Grid.Column="0" Grid.ColumnSpan="2"/>-->
+                <Label Text=" " Grid.Row="51" Grid.Column="0" Grid.ColumnSpan="2" x:Name="labelSpacer45" Font="5" HorizontalTextAlignment="Center" BackgroundColor="LightGray"/>
+
+
+            </Grid>
+
+        </ScrollView>
+    </StackLayout>
+  
+
+
+</ContentPage>   
+
